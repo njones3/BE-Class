@@ -1,0 +1,14 @@
+In cmd in the correct directory.
+C:\users\njone\desktop\BE-Promineo-Tech\
+
+git add .
+
+git status
+
+git commit -m "added Merry Christmas"
+
+git status
+
+git push
+
+refresh page in GitHub.com
