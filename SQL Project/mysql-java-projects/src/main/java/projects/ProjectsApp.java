@@ -17,18 +17,19 @@ public class ProjectsApp {
 	
 	private Scanner scanner = new Scanner(System.in);
 	private ProjectService projectService = new ProjectService();
+	private Project curProject;
 	
 	
 	// @formatter:off
 			private List<String> operations = List.of (
-					"1) Add a project"
+					"1) Add a project", "2) List Projects", "3) Select a Project"
 					);
 		// @formatter:on
 	
 	
-	public static void main(String[] args) {		
+	 public static void main(String[] args) {		
 		new ProjectsApp().processUserSelections();
-	}
+	 }
 /*
  * Creates a menu for the user to select and enter data until user ends.
  */
@@ -37,7 +38,8 @@ public class ProjectsApp {
 		boolean done = false;
 		while (!done) {
 			try {
-				int selection = getUserSelection();
+
+int selection = getUserSelection();
 				
 				switch (selection) {
 				case -1:
@@ -48,15 +50,55 @@ public class ProjectsApp {
 					createProject();
 					break;
 					
+				case 2:
+					listProjects();
+					break;
+					
+				case 3:
+					selectProject();
+					break;
+					
 				default:
 					System.out.println("\n" + selection + " is not a valid selection.  Try again.");
 					break;
 				}
 			} catch (Exception e) {
 				System.out.println("\nError: " + e + " Try again.");
+				//e.printStackTrace();
 			}
 		}
+	}
+	
+	private void selectProject() {
+		listProjects();
+		Integer projectId = getIntInput("Enter a project ID to select a project");
 		
+		curProject = null;
+		
+		curProject = projectService.fetchProjectById(projectId);
+	
+}
+	private void listProjects() {
+		List<Project> projects = projectService.fetchAllProjects();
+		
+		System.out.println("\nProjects:");
+		
+		projects.forEach(project -> System.out.println(" " + project.getProjectId() + ": " 
+		+ project.getProjectName()));
+	}
+	
+private void printOperations() {
+		
+		System.out.println("\nThese are the available selections.  Press the Enter key to quit:");
+		for (String line : operations) {
+			System.out.println(" " + line);
+		}
+		if (Objects.isNull(curProject)) {
+			System.out.println("\nYou are not working with a project");
+		}
+		else {
+			System.out.println("\nYou are working with project: " + curProject);
+		}
 	}
 /*
  * Creating the prompts for the project application.
@@ -129,13 +171,6 @@ public class ProjectsApp {
 		return input.isBlank() ? null : input.trim();
 	}
 
-	private void printOperations() {
-		
-		System.out.println("\nThese are the available selections.  Press the Enter key to quit:");
-		for (String line : operations) {
-			System.out.println(" " + line);
-		}
-		
-	}
+	
 
 }
