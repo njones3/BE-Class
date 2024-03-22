@@ -1,0 +1,26 @@
+{
+  "petStoreName": "Really Cool Pet Store",
+  "petStoreAddress": "8395 North Bladford Lane",
+  "petStoreCity": "Gangrene",
+  "petStoreState": "Georgia",
+  "petStoreZip" : "12345",
+  "petStorePhone": "303-322-4995"
+}
+
+{
+  "petStoreName": "Fast and the Furriest",
+  "petStoreAddress": "2365 Albin Lane",
+  "petStoreCity": "Albin",
+  "petStoreState": "Virginia",
+  "petStoreZip" : "22603",
+  "petStorePhone": "540-665-1111"
+}
+
+{
+  "petStoreName": "Rootin' Tootin' Dawg Gone Good Times",
+  "petStoreAddress": "8395 Princess Anne Rd",
+  "petStoreCity": "Virginia Beach",
+  "petStoreState": "Virginia",
+  "petStoreZip" : "23565",
+  "petStorePhone": "757-497-2525"
+}
